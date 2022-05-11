@@ -1,7 +1,9 @@
 package lesson_2.task_1;
 
 import lesson_2.MyList;
+
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.StringJoiner;
 
 public class MyArrayList<E> implements MyList<E> {
@@ -18,7 +20,6 @@ public class MyArrayList<E> implements MyList<E> {
     public MyArrayList(int initialCapacity) {
         if (initialCapacity > 0) {
             this.elements = new Object[initialCapacity];
-            this.size = 0;
         } else {
             throw new IllegalArgumentException("Capacity must be > 0");
         }
@@ -113,14 +114,8 @@ public class MyArrayList<E> implements MyList<E> {
 
     @Override
     public int indexOf(Object o) {
-        if (o == null) {
-            for (int i = 0; i < size; i++) {
-                if (elements[i] == null) return i;
-            }
-        } else {
-            for (int i = 0; i < size; i++) {
-                if (elements[i].equals(o)) return i;
-            }
+        for (int i = 0; i < size; i++) {
+            if (Objects.equals(elements[i], o)) return i;
         }
         return -1;
     }

@@ -4,24 +4,22 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class Counter {
 
-    private int count = 0;
+    private long count = 0;
     private static final ReentrantLock lock = new ReentrantLock();
 
-    public int increment() {
+    public void increment() {
         lock.lock();
         count++;
         lock.unlock();
-        return count;
     }
 
-    public int decrement() {
+    public void decrement() {
         lock.lock();
         count--;
         lock.unlock();
-        return count;
     }
 
-    public int getCount() {
+    public long getCount() {
         return count;
     }
 }
